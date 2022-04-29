@@ -5,6 +5,7 @@ public class Manager {
     public String name;
     public String surname;
     public Cinema cinemaDiAppartenenza;
+    public int quotaRiscossa;
 
 
     public Manager(String name, String surname) {
@@ -29,10 +30,6 @@ public class Manager {
 
     @Override
     public String toString() {
-        return "Manager{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", cinemaDiAppartenenza=" + cinemaDiAppartenenza +
-                '}';
-    }
+        return name + " " + surname;
+}
 }

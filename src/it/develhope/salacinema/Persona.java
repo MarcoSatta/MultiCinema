@@ -7,10 +7,6 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", age=" + age +
-                '}';
+        return name + ' ' + surname + " " + age;
     }
 }

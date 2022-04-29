@@ -1,5 +1,6 @@
 package it.develhope.salacinema;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Cinema {
@@ -25,6 +26,7 @@ public class Cinema {
             } else continue;
         }
         System.out.println("I posti disponibili nel cinema "+nameCinema+" sono: " + numeroPostiLiberi);
+        System.out.println("L'incasso totale ammonta a " + manger.quotaRiscossa + "€");
         postiLiberiStatic = numeroPostiLiberi;
         numeroPostiLiberi = 0;
     }
@@ -48,12 +50,15 @@ public class Cinema {
                     persona.surname = scanner.next();
                     System.out.println("Inserisci l'età della persona numero : " + i + " che desideri prenotare : ");
                     persona.age = scanner.nextInt();
-                    if (persona.age < 14){System.out.println("Paga il prezzo ridotto");
+                    if (persona.age < 14){
+                        System.out.println("Paga il prezzo ridotto di 7 euro al manager " + manger.name);
+                        manger.quotaRiscossa += 7;
                     }else {
-                        System.out.println("Paga il prezzo pieno");
+                        System.out.println("Paga il prezzo pieno di 10 euro al manager " + manger.name);
+                        manger.quotaRiscossa += 10;
                     }
                     sala[i] = persona;
-                    System.out.println("Hai correttamente prenotato per il cinema"+nameCinema+" un posto per " + persona.name + " " + persona.surname);
+                    System.out.println("Hai correttamente prenotato per il cinema "+nameCinema+" un posto per " + persona.name + " " + persona.surname);
 
                 } else continue;
             }
@@ -78,15 +83,20 @@ public class Cinema {
                     && cognomePersonaDaCancellare.equalsIgnoreCase(sala[i].surname)){
                 sala[i] = null;
                 System.out.println("hai correttamente cancellato la prenotazione di: " + nomePersonaDaCancellare + " "+ cognomePersonaDaCancellare+" al cinema  "+ nameCinema);
-
-            }
+            } else i = sala.length;
+            System.out.println("Non ho trovato nessuna persona con questo nome");
         }
+        }
+        public int stampaArray(Persona[] sala){
+            for (Persona persona: sala
+                 ) { if (persona == null){
+                System.out.println("posto vuoto");
+            }else System.out.println(persona);
+            } return numeroPostiLiberi;
         }
 
     @Override
     public String toString() {
-        return "Cinema{" +
-                "nameCinema='" + nameCinema + '\'' +
-                '}';
+        return nameCinema;
     }
 }
