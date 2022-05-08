@@ -67,6 +67,7 @@ public class Cinema {
         }
         }catch (Exception e){
             System.out.println("DEVI INSERIRE UN NUMERO!!");
+            scanner.nextLine();
         }
     }
     public void cancellaPrenotazione(Persona[] sala){
