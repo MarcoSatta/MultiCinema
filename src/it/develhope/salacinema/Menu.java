@@ -30,6 +30,16 @@ public class Menu {
         multiCinema.inserisciCinema(cinema4);
     }
 
+    private void stampaMenu(){
+        System.out.println("----------------------------------------------------------");
+        System.out.println("Seleziona 1 per Elenco lista dei posti disponibili");
+        System.out.println("Seleziona 2 per prenotare posto a sedere");
+        System.out.println("Seleziona 3 per cancellare prenotazione");
+        System.out.println("Seleziona 4 per selezionare un altro cinema");
+        System.out.println("Seleziona 5 per uscire dal programma");
+        System.out.println("----------------------------------------------------------");
+    }
+
     public void menu(){
         System.out.println("------------------------------------------------------------");
         System.out.println("Inserisci il nome del cinema nel quale vuoi entrare:");
@@ -41,14 +51,7 @@ public class Menu {
                     System.out.println("Il manager di questo cinema è " + MultiCinema.cinemas.get(i).manager);
                     boolean condizione = true;
                     while (condizione) {
-                        System.out.println("----------------------------------------------------------");
-                        System.out.println("Seleziona 1 per Elenco lista dei posti disponibili");
-                        System.out.println("Seleziona 2 per prenotare posto a sedere");
-                        System.out.println("Seleziona 3 per cancellare prenotazione");
-                        System.out.println("Seleziona 4 per selezionare un altro cinema");
-                        System.out.println("Seleziona 5 per uscire dal programma");
-                        System.out.println("----------------------------------------------------------");
-
+                        stampaMenu();
                         try{
                             int x = scanner.nextInt();
                             switch (x) {

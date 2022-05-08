@@ -16,7 +16,7 @@ public class Cinema {
         scanner = new Scanner(System.in);
         numeroPostiLiberi = 0;
     }
-    
+
     public void postiLiberi(Persona[] sala){
         this.sala = sala;
         for (Persona persona : sala) {

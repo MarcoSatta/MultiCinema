@@ -12,9 +12,6 @@ public class Manager {
         this.name = name;
         this.surname = surname;
     }
-
-
-
     /*
     public void postiLiberi(){
         cinemaDiAppartenenza.postiLiberi(cinemaDiAppartenenza.sala);
