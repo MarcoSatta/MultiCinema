@@ -31,24 +31,19 @@ public class Cinema {
         numeroPostiLiberi = 0;
     }
 
-    private Persona createPersona(boolean delete){
+    private Persona createPersona(boolean prenota){
         String nome, cognome;
         int age;
-        if(delete){
-            System.out.println("Inserisci il nome della persona che desideri cancellare : ");
-            nome = scanner.next();
-            System.out.println("Inserisci il cognome della persona che desideri cancellare : ");
-            cognome = scanner.next();
-            return new Persona(nome,cognome);
-        } else {
-            System.out.println("Inserisci il nome della persona numero che desideri prenotare : ");
-            nome = scanner.next();
-            System.out.println("Inserisci il cognome della persona numero che desideri prenotare : ");
-            cognome = scanner.next();
-            System.out.println("Inserisci l'età della persona numero che desideri prenotare : ");
+        System.out.println("Inserisci il nome della persona:");
+        nome = scanner.next();
+        System.out.println("Inserisci il cognome della persona:");
+        cognome = scanner.next();
+        if(prenota){
+            System.out.println("Inserisci l'età della persona:");
             age = scanner.nextInt();
             return new Persona(nome,cognome,age);
         }
+        return new Persona(nome,cognome);
     }
 
     public void prenotaPosto(Persona[] sala){
@@ -63,7 +58,8 @@ public class Cinema {
             for (int i = 0; i < numeroPostiDaPrenotare; i++) {
 
                 if (sala[i] == null) {
-                    System.out.println("Persona n° "+i);
+                    System.out.println("Persona n° "+(i+1));
+                    System.out.println("Effettuare la prenotazione di:");
                     Persona persona = createPersona(false);
                     if (persona.age < 14){
                         System.out.println("Paga il prezzo ridotto di 7 euro al manager " + manager.name);
@@ -87,6 +83,7 @@ public class Cinema {
     }
     public void cancellaPrenotazione(Persona[] sala){
         this.sala = sala;
+        System.out.println("Cancellare la prenotazione di:");
         Persona check = createPersona(true);
         boolean found = false;
         for (int i = 0; i < sala.length; i++){
