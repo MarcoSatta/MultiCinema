@@ -24,11 +24,32 @@ public class Cinema {
                 numeroPostiLiberi++;
 
             }
+            persona = new Persona();
         }
         System.out.println("I posti disponibili nel cinema "+nameCinema+" sono: " + numeroPostiLiberi);
         System.out.println("L'incasso totale ammonta a " + manager.quotaRiscossa + "€");
         postiLiberiStatic = numeroPostiLiberi;
         numeroPostiLiberi = 0;
+    }
+
+    private Persona createPersona(boolean delete){
+        String nome, cognome;
+        int age;
+        if(delete){
+            System.out.println("Inserisci il nome della persona che desideri cancellare : ");
+            nome = scanner.next();
+            System.out.println("Inserisci il cognome della persona che desideri cancellare : ");
+            cognome = scanner.next();
+            return new Persona(nome,cognome);
+        } else {
+            System.out.println("Inserisci il nome della persona numero che desideri prenotare : ");
+            nome = scanner.next();
+            System.out.println("Inserisci il cognome della persona numero che desideri prenotare : ");
+            cognome = scanner.next();
+            System.out.println("Inserisci l'età della persona numero che desideri prenotare : ");
+            age = scanner.nextInt();
+            return new Persona(nome,cognome,age);
+        }
     }
 
     public void prenotaPosto(Persona[] sala){
@@ -43,13 +64,8 @@ public class Cinema {
             for (int i = 0; i < numeroPostiDaPrenotare; i++) {
 
                 if (sala[i] == null) {
-                    Persona persona = new Persona();
-                    System.out.println("Inserisci il nome della persona numero : " + i + " che desideri prenotare : ");
-                    persona.name = scanner.next();
-                    System.out.println("Inserisci il cognome della persona numero : " + i + " che desideri prenotare : ");
-                    persona.surname = scanner.next();
-                    System.out.println("Inserisci l'età della persona numero : " + i + " che desideri prenotare : ");
-                    persona.age = scanner.nextInt();
+                    System.out.println("Persona n° "+i);
+                    Persona persona = createPersona(false);
                     if (persona.age < 14){
                         System.out.println("Paga il prezzo ridotto di 7 euro al manager " + manager.name);
                         manager.quotaRiscossa += 7;
@@ -72,22 +88,19 @@ public class Cinema {
     }
     public void cancellaPrenotazione(Persona[] sala){
         this.sala = sala;
-        System.out.println("Inserisci il nome della persona che desideri cancellare : ");
-        String nomePersonaDaCancellare;
-        nomePersonaDaCancellare = scanner.next();
-        System.out.println("Inserisci il cognome della persona che desideri cancellare : ");
-        String cognomePersonaDaCancellare;
-        cognomePersonaDaCancellare = scanner.next();
-
+        Persona check = createPersona(true);
+        boolean found = false;
         for (int i = 0; i < sala.length; i++){
-            if (sala[i] != null && nomePersonaDaCancellare.equalsIgnoreCase(sala[i].name)
-                    && cognomePersonaDaCancellare.equalsIgnoreCase(sala[i].surname)){
+            if (sala[i]!= null && check.toStringSel().equalsIgnoreCase(sala[i].toStringSel())){
                 sala[i] = null;
-                System.out.println("hai correttamente cancellato la prenotazione di: " + nomePersonaDaCancellare + " "+ cognomePersonaDaCancellare+" al cinema  "+ nameCinema);
-            } else i = sala.length;
+                System.out.println("hai correttamente cancellato la prenotazione di: " + check.name + " "+ check.surname+" al cinema  "+ nameCinema);
+                found=true;
+            }
+        }
+        if(!found){
             System.out.println("Non ho trovato nessuna persona con questo nome");
         }
-        }
+    }
         public int stampaArray(Persona[] sala){
             for (Persona persona: sala
                  ) { if (persona == null){
