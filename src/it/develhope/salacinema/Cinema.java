@@ -66,7 +66,7 @@ public class Cinema {
                     if (sala[i] == null) {
                         System.out.println("Persona n° "+(i+1));
                         System.out.println("Effettuare la prenotazione di:");
-                        Persona persona = createPersona(false);
+                        Persona persona = createPersona(true);
                         pagamento(persona.age);
                         sala[i] = persona;
                         System.out.println("Hai correttamente prenotato per il cinema "+nameCinema+" un posto per " + persona.name + " " + persona.surname);
@@ -84,7 +84,7 @@ public class Cinema {
     public void cancellaPrenotazione(Persona[] sala){
         this.sala = sala;
         System.out.println("Cancellare la prenotazione di:");
-        Persona check = createPersona(true);
+        Persona check = createPersona(false);
         boolean found = false;
         for (int i = 0; i < sala.length; i++){
             if (sala[i]!= null && check.toStringSel().equalsIgnoreCase(sala[i].toStringSel())){
