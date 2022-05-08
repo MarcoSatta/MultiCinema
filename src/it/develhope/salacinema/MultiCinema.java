@@ -16,7 +16,7 @@ public class MultiCinema {
     }
 
     public static MultiCinema getInstance(){
-        if (!Optional.ofNullable(multiCinema).isPresent()){
+        if (Optional.ofNullable(multiCinema).isEmpty()){
             multiCinema = new MultiCinema();
         }
         return multiCinema;
