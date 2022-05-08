@@ -6,8 +6,14 @@ import java.util.Optional;
 
 public class MultiCinema {
     private static MultiCinema multiCinema;
+    public static List<Manager> managersLiberi;
+    public static List<Cinema> cinemas;
 
-    private MultiCinema(){}
+
+    private MultiCinema(){
+        managersLiberi = new ArrayList<>();
+        cinemas = new ArrayList<>();
+    }
 
     public static MultiCinema getInstance(){
         if (!Optional.ofNullable(multiCinema).isPresent()){
@@ -15,9 +21,6 @@ public class MultiCinema {
         }
         return multiCinema;
     }
-
-    public static List<Manager> managersLiberi = new ArrayList<>();
-    public static List<Cinema> cinemas = new ArrayList<>();
 
     public void inserisciCinema(Cinema cinema){
         cinemas.add(cinema);
