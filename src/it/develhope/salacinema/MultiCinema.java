@@ -21,8 +21,8 @@ public class MultiCinema {
 
     public void inserisciCinema(Cinema cinema){
         cinemas.add(cinema);
-        if (cinema.manger == null){
-            cinema.manger = managersLiberi.get(0);
+        if (cinema.manager == null){
+            cinema.manager = managersLiberi.get(0);
             managersLiberi.get(0).cinemaDiAppartenenza = cinema;
             managersLiberi.remove(0);
         }

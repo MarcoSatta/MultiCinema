@@ -5,17 +5,19 @@ import java.util.Scanner;
 
 public class Cinema {
 
-    public Manager manger;
+    public Manager manager;
     public String nameCinema;
-    public Persona[] sala = new Persona[10];
-    public Scanner scanner = new Scanner(System.in);
+    public Persona[] sala;
+    public Scanner scanner;
+    public int postiLiberiStatic;
+    public int numeroPostiLiberi;
 
     public Cinema(String nameCinema) {
         this.nameCinema = nameCinema;
+        this.sala = new Persona[10];
+        scanner = new Scanner(System.in);
+        numeroPostiLiberi = 0;
     }
-
-    public int postiLiberiStatic;
-    public int numeroPostiLiberi = 0;
     public void postiLiberi(Persona[] sala){
         this.sala = sala;
         for (int i = 0; i < sala.length; i++){
@@ -26,7 +28,7 @@ public class Cinema {
             } else continue;
         }
         System.out.println("I posti disponibili nel cinema "+nameCinema+" sono: " + numeroPostiLiberi);
-        System.out.println("L'incasso totale ammonta a " + manger.quotaRiscossa + "€");
+        System.out.println("L'incasso totale ammonta a " + manager.quotaRiscossa + "€");
         postiLiberiStatic = numeroPostiLiberi;
         numeroPostiLiberi = 0;
     }
@@ -51,11 +53,11 @@ public class Cinema {
                     System.out.println("Inserisci l'età della persona numero : " + i + " che desideri prenotare : ");
                     persona.age = scanner.nextInt();
                     if (persona.age < 14){
-                        System.out.println("Paga il prezzo ridotto di 7 euro al manager " + manger.name);
-                        manger.quotaRiscossa += 7;
+                        System.out.println("Paga il prezzo ridotto di 7 euro al manager " + manager.name);
+                        manager.quotaRiscossa += 7;
                     }else {
-                        System.out.println("Paga il prezzo pieno di 10 euro al manager " + manger.name);
-                        manger.quotaRiscossa += 10;
+                        System.out.println("Paga il prezzo pieno di 10 euro al manager " + manager.name);
+                        manager.quotaRiscossa += 10;
                     }
                     sala[i] = persona;
                     System.out.println("Hai correttamente prenotato per il cinema "+nameCinema+" un posto per " + persona.name + " " + persona.surname);

@@ -55,7 +55,7 @@ public class Main {
         while (condizione2) {
             for (i = 0; i < multiCinema.cinemas.size(); i++){
                 if (cinemaSelezionato.equalsIgnoreCase(multiCinema.cinemas.get(i).nameCinema)) {
-                System.out.println("Il manager di questo cinema è " + multiCinema.cinemas.get(i).manger);
+                System.out.println("Il manager di questo cinema è " + multiCinema.cinemas.get(i).manager);
                 boolean condizione = true;
                 while (condizione) {
                     System.out.println("----------------------------------------------------------");
