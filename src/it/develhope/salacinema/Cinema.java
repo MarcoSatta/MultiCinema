@@ -24,7 +24,6 @@ public class Cinema {
                 numeroPostiLiberi++;
 
             }
-            persona = new Persona();
         }
         System.out.println("I posti disponibili nel cinema "+nameCinema+" sono: " + numeroPostiLiberi);
         System.out.println("L'incasso totale ammonta a " + manager.quotaRiscossa + "€");

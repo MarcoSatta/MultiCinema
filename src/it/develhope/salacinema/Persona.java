@@ -5,11 +5,6 @@ public class Persona {
     public String surname;
     public int age;
 
-    public Persona(){
-        this.name = "blank";
-        this.surname = "space";
-    }
-
     public Persona(String name, String surname) {
         this.name = name;
         this.surname = surname;
