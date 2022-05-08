@@ -16,13 +16,12 @@ public class Cinema {
         scanner = new Scanner(System.in);
         numeroPostiLiberi = 0;
     }
+    
     public void postiLiberi(Persona[] sala){
         this.sala = sala;
         for (Persona persona : sala) {
-
             if (persona == null) {
                 numeroPostiLiberi++;
-
             }
         }
         System.out.println("I posti disponibili nel cinema "+nameCinema+" sono: " + numeroPostiLiberi);
@@ -46,41 +45,42 @@ public class Cinema {
         return new Persona(nome,cognome);
     }
 
+    private void pagamento(int par){
+        if (par < 14){
+            System.out.println("Paga il prezzo ridotto di 7 euro al manager " + manager.name);
+            manager.quotaRiscossa += 7;
+        }else {
+            System.out.println("Paga il prezzo pieno di 10 euro al manager " + manager.name);
+            manager.quotaRiscossa += 10;
+        }
+    }
+
     public void prenotaPosto(Persona[] sala){
         postiLiberi(sala);
         this.sala = sala;
         System.out.println("Inserisci il numero di posti che desideri prenotare : ");
         try {
             int numeroPostiDaPrenotare = scanner.nextInt();
-
-        if (numeroPostiDaPrenotare >= 1 && numeroPostiDaPrenotare <= postiLiberiStatic) {
-
-            for (int i = 0; i < numeroPostiDaPrenotare; i++) {
-
-                if (sala[i] == null) {
-                    System.out.println("Persona n° "+(i+1));
-                    System.out.println("Effettuare la prenotazione di:");
-                    Persona persona = createPersona(false);
-                    if (persona.age < 14){
-                        System.out.println("Paga il prezzo ridotto di 7 euro al manager " + manager.name);
-                        manager.quotaRiscossa += 7;
-                    }else {
-                        System.out.println("Paga il prezzo pieno di 10 euro al manager " + manager.name);
-                        manager.quotaRiscossa += 10;
+            if (numeroPostiDaPrenotare >= 1 && numeroPostiDaPrenotare <= postiLiberiStatic) {
+                for (int i = 0; i < numeroPostiDaPrenotare; i++) {
+                    if (sala[i] == null) {
+                        System.out.println("Persona n° "+(i+1));
+                        System.out.println("Effettuare la prenotazione di:");
+                        Persona persona = createPersona(false);
+                        pagamento(persona.age);
+                        sala[i] = persona;
+                        System.out.println("Hai correttamente prenotato per il cinema "+nameCinema+" un posto per " + persona.name + " " + persona.surname);
                     }
-                    sala[i] = persona;
-                    System.out.println("Hai correttamente prenotato per il cinema "+nameCinema+" un posto per " + persona.name + " " + persona.surname);
-
                 }
+            } else {
+                System.out.println("devi inserire un numero compreso tra 1 e " + postiLiberiStatic);
             }
-        }else {
-            System.out.println("devi inserire un numero compreso tra 1 e " + postiLiberiStatic);
-        }
         }catch (Exception e){
             System.out.println("DEVI INSERIRE UN NUMERO!!");
             scanner.nextLine();
         }
     }
+
     public void cancellaPrenotazione(Persona[] sala){
         this.sala = sala;
         System.out.println("Cancellare la prenotazione di:");
@@ -97,13 +97,15 @@ public class Cinema {
             System.out.println("Non ho trovato nessuna persona con questo nome");
         }
     }
-        public int stampaArray(Persona[] sala){
-            for (Persona persona: sala
-                 ) { if (persona == null){
+
+    public int stampaArray(Persona[] sala){
+        for (Persona persona: sala) {
+            if (persona == null) {
                 System.out.println("posto vuoto");
-            }else System.out.println(persona);
-            } return numeroPostiLiberi;
-        }
+            } else System.out.println(persona);
+            }
+        return numeroPostiLiberi;
+    }
 
     @Override
     public String toString() {
