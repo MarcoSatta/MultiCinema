@@ -1,6 +1,4 @@
 package it.develhope.salacinema;
-
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Cinema {
@@ -20,12 +18,12 @@ public class Cinema {
     }
     public void postiLiberi(Persona[] sala){
         this.sala = sala;
-        for (int i = 0; i < sala.length; i++){
+        for (Persona persona : sala) {
 
-            if (sala[i] == null){
+            if (persona == null) {
                 numeroPostiLiberi++;
 
-            } else continue;
+            }
         }
         System.out.println("I posti disponibili nel cinema "+nameCinema+" sono: " + numeroPostiLiberi);
         System.out.println("L'incasso totale ammonta a " + manager.quotaRiscossa + "€");
@@ -62,7 +60,7 @@ public class Cinema {
                     sala[i] = persona;
                     System.out.println("Hai correttamente prenotato per il cinema "+nameCinema+" un posto per " + persona.name + " " + persona.surname);
 
-                } else continue;
+                }
             }
         }else {
             System.out.println("devi inserire un numero compreso tra 1 e " + postiLiberiStatic);
