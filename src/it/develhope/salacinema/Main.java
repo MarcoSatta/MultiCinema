@@ -1,6 +1,7 @@
 package it.develhope.salacinema;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /*Esercizio 1.0
@@ -66,27 +67,33 @@ public class Main {
                     System.out.println("Seleziona 5 per uscire dal programma");
                     System.out.println("----------------------------------------------------------");
 
-                    switch (scanner.nextInt()) {
-                        case 1:
-                            multiCinema.cinemas.get(i).postiLiberi(multiCinema.cinemas.get(i).sala);
-                            break;
-                        case 2:
-                            multiCinema.cinemas.get(i).prenotaPosto(multiCinema.cinemas.get(i).sala);
-                            break;
-                        case 3:
-                            multiCinema.cinemas.get(i).cancellaPrenotazione(multiCinema.cinemas.get(i).sala);
-                            break;
-                        case 4:
-                            condizione = false;
-                            condizione2 = true;
-                            System.out.println("Inserisci il nome del cinema nel quale vuoi entrare : ");
-                            cinemaSelezionato = scanner.next();
-                            break;
-                        case 5 : condizione = false;
-                            condizione2 = false;
-                        break;
-                        default:
-                            System.out.println("Inserisci un numero compreso tra 1 e 5");
+                    try{
+                        int x = scanner.nextInt();
+                        switch (x) {
+                            case 1:
+                                multiCinema.cinemas.get(i).postiLiberi(multiCinema.cinemas.get(i).sala);
+                                break;
+                            case 2:
+                                multiCinema.cinemas.get(i).prenotaPosto(multiCinema.cinemas.get(i).sala);
+                                break;
+                            case 3:
+                                multiCinema.cinemas.get(i).cancellaPrenotazione(multiCinema.cinemas.get(i).sala);
+                                break;
+                            case 4:
+                                condizione = false;
+                                condizione2 = true;
+                                System.out.println("Inserisci il nome del cinema nel quale vuoi entrare : ");
+                                cinemaSelezionato = scanner.next();
+                                break;
+                            case 5 : condizione = false;
+                                condizione2 = false;
+                                break;
+                            default:
+                                System.out.println("Inserisci un numero compreso tra 1 e 5");
+                        }
+                    }catch (InputMismatchException e){
+                        System.out.println("Comando non idoneo!");
+                        scanner.nextLine();
                     }
                 }
                 System.out.println("Persone prenotate nel cinema " + multiCinema.cinemas.get(i).nameCinema + " : " +  multiCinema.cinemas.get(i).stampaArray(multiCinema.cinemas.get(i).sala));
