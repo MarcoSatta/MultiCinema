@@ -12,10 +12,7 @@ public class Manager {
         this.name = name;
         this.surname = surname;
     }
-
-
-
-
+    /*
     public void postiLiberi(){
         cinemaDiAppartenenza.postiLiberi(cinemaDiAppartenenza.sala);
     }
@@ -27,7 +24,7 @@ public class Manager {
     public void cancellaPrenotazione(){
         cinemaDiAppartenenza.cancellaPrenotazione(cinemaDiAppartenenza.sala);
     }
-
+    */
     @Override
     public String toString() {
         return name + " " + surname;

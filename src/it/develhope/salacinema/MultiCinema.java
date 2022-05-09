@@ -6,23 +6,26 @@ import java.util.Optional;
 
 public class MultiCinema {
     private static MultiCinema multiCinema;
+    public static List<Manager> managersLiberi;
+    public static List<Cinema> cinemas;
 
-    private MultiCinema(){}
+
+    private MultiCinema(){
+        managersLiberi = new ArrayList<>();
+        cinemas = new ArrayList<>();
+    }
 
     public static MultiCinema getInstance(){
-        if (!Optional.ofNullable(multiCinema).isPresent()){
+        if (Optional.ofNullable(multiCinema).isEmpty()){
             multiCinema = new MultiCinema();
         }
         return multiCinema;
     }
 
-    public static List<Manager> managersLiberi = new ArrayList<>();
-    public static List<Cinema> cinemas = new ArrayList<>();
-
     public void inserisciCinema(Cinema cinema){
         cinemas.add(cinema);
-        if (cinema.manger == null){
-            cinema.manger = managersLiberi.get(0);
+        if (cinema.manager == null){
+            cinema.manager = managersLiberi.get(0);
             managersLiberi.get(0).cinemaDiAppartenenza = cinema;
             managersLiberi.remove(0);
         }

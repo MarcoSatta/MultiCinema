@@ -5,8 +5,28 @@ public class Persona {
     public String surname;
     public int age;
 
+    public Persona(String name, String surname) {
+        this.name = name;
+        this.surname = surname;
+    }
+
+    public Persona(String name, String surname, int age) {
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+    }
+
     @Override
     public String toString() {
-        return name + ' ' + surname + " " + age;
+        return "Persona{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", age=" + age +
+                '}';
     }
+
+    public String toStringSel(){
+        return name + ' ' + surname;
+    }
+
 }

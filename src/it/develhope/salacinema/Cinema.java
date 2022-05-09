@@ -1,34 +1,58 @@
 package it.develhope.salacinema;
-
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Cinema {
 
-    public Manager manger;
+    public Manager manager;
     public String nameCinema;
-    public Persona[] sala = new Persona[10];
-    public Scanner scanner = new Scanner(System.in);
+    public Persona[] sala;
+    public Scanner scanner;
+    public int postiLiberiStatic;
+    public int numeroPostiLiberi;
 
     public Cinema(String nameCinema) {
         this.nameCinema = nameCinema;
+        this.sala = new Persona[10];
+        scanner = new Scanner(System.in);
+        numeroPostiLiberi = 0;
     }
 
-    public int postiLiberiStatic;
-    public int numeroPostiLiberi = 0;
     public void postiLiberi(Persona[] sala){
         this.sala = sala;
-        for (int i = 0; i < sala.length; i++){
-
-            if (sala[i] == null){
+        for (Persona persona : sala) {
+            if (persona == null) {
                 numeroPostiLiberi++;
-
-            } else continue;
+            }
         }
         System.out.println("I posti disponibili nel cinema "+nameCinema+" sono: " + numeroPostiLiberi);
-        System.out.println("L'incasso totale ammonta a " + manger.quotaRiscossa + "€");
+        System.out.println("L'incasso totale ammonta a " + manager.quotaRiscossa + "€");
         postiLiberiStatic = numeroPostiLiberi;
         numeroPostiLiberi = 0;
+    }
+
+    private Persona createPersona(boolean prenota){
+        String nome, cognome;
+        int age;
+        System.out.println("Inserisci il nome della persona:");
+        nome = scanner.next();
+        System.out.println("Inserisci il cognome della persona:");
+        cognome = scanner.next();
+        if(prenota){
+            System.out.println("Inserisci l'età della persona:");
+            age = scanner.nextInt();
+            return new Persona(nome,cognome,age);
+        }
+        return new Persona(nome,cognome);
+    }
+
+    private void pagamento(int par){
+        if (par < 14){
+            System.out.println("Paga il prezzo ridotto di 7 euro al manager " + manager.name);
+            manager.quotaRiscossa += 7;
+        }else {
+            System.out.println("Paga il prezzo pieno di 10 euro al manager " + manager.name);
+            manager.quotaRiscossa += 10;
+        }
     }
 
     public void prenotaPosto(Persona[] sala){
@@ -37,63 +61,51 @@ public class Cinema {
         System.out.println("Inserisci il numero di posti che desideri prenotare : ");
         try {
             int numeroPostiDaPrenotare = scanner.nextInt();
-
-        if (numeroPostiDaPrenotare >= 1 && numeroPostiDaPrenotare <= postiLiberiStatic) {
-
-            for (int i = 0; i < numeroPostiDaPrenotare; i++) {
-
-                if (sala[i] == null) {
-                    Persona persona = new Persona();
-                    System.out.println("Inserisci il nome della persona numero : " + i + " che desideri prenotare : ");
-                    persona.name = scanner.next();
-                    System.out.println("Inserisci il cognome della persona numero : " + i + " che desideri prenotare : ");
-                    persona.surname = scanner.next();
-                    System.out.println("Inserisci l'età della persona numero : " + i + " che desideri prenotare : ");
-                    persona.age = scanner.nextInt();
-                    if (persona.age < 14){
-                        System.out.println("Paga il prezzo ridotto di 7 euro al manager " + manger.name);
-                        manger.quotaRiscossa += 7;
-                    }else {
-                        System.out.println("Paga il prezzo pieno di 10 euro al manager " + manger.name);
-                        manger.quotaRiscossa += 10;
+            if (numeroPostiDaPrenotare >= 1 && numeroPostiDaPrenotare <= postiLiberiStatic) {
+                for (int i = 0; i < numeroPostiDaPrenotare; i++) {
+                    if (sala[i] == null) {
+                        System.out.println("Persona n° "+(i+1));
+                        System.out.println("Effettuare la prenotazione di:");
+                        Persona persona = createPersona(true);
+                        pagamento(persona.age);
+                        sala[i] = persona;
+                        System.out.println("Hai correttamente prenotato per il cinema "+nameCinema+" un posto per " + persona.name + " " + persona.surname);
                     }
-                    sala[i] = persona;
-                    System.out.println("Hai correttamente prenotato per il cinema "+nameCinema+" un posto per " + persona.name + " " + persona.surname);
-
-                } else continue;
+                }
+            } else {
+                System.out.println("devi inserire un numero compreso tra 1 e " + postiLiberiStatic);
             }
-        }else {
-            System.out.println("devi inserire un numero compreso tra 1 e " + postiLiberiStatic);
-        }
         }catch (Exception e){
             System.out.println("DEVI INSERIRE UN NUMERO!!");
+            scanner.nextLine();
         }
     }
+
     public void cancellaPrenotazione(Persona[] sala){
         this.sala = sala;
-        System.out.println("Inserisci il nome della persona che desideri cancellare : ");
-        String nomePersonaDaCancellare;
-        nomePersonaDaCancellare = scanner.next();
-        System.out.println("Inserisci il cognome della persona che desideri cancellare : ");
-        String cognomePersonaDaCancellare;
-        cognomePersonaDaCancellare = scanner.next();
-
+        System.out.println("Cancellare la prenotazione di:");
+        Persona check = createPersona(false);
+        boolean found = false;
         for (int i = 0; i < sala.length; i++){
-            if (sala[i] != null && nomePersonaDaCancellare.equalsIgnoreCase(sala[i].name)
-                    && cognomePersonaDaCancellare.equalsIgnoreCase(sala[i].surname)){
+            if (sala[i]!= null && check.toStringSel().equalsIgnoreCase(sala[i].toStringSel())){
                 sala[i] = null;
-                System.out.println("hai correttamente cancellato la prenotazione di: " + nomePersonaDaCancellare + " "+ cognomePersonaDaCancellare+" al cinema  "+ nameCinema);
-            } else i = sala.length;
+                System.out.println("hai correttamente cancellato la prenotazione di: " + check.name + " "+ check.surname+" al cinema  "+ nameCinema);
+                found=true;
+            }
+        }
+        if(!found){
             System.out.println("Non ho trovato nessuna persona con questo nome");
         }
-        }
-        public int stampaArray(Persona[] sala){
-            for (Persona persona: sala
-                 ) { if (persona == null){
+    }
+
+    public int stampaArray(Persona[] sala){
+        for (Persona persona: sala) {
+            if (persona == null) {
                 System.out.println("posto vuoto");
-            }else System.out.println(persona);
-            } return numeroPostiLiberi;
-        }
+            } else System.out.println(persona);
+            }
+        return numeroPostiLiberi;
+    }
 
     @Override
     public String toString() {
