@@ -64,7 +64,7 @@ public class Cinema {
             if (numeroPostiDaPrenotare >= 1 && numeroPostiDaPrenotare <= postiLiberiStatic) {
                 for (int i = 0; i < numeroPostiDaPrenotare; i++) {
                     if (sala[i] == null) {
-                        System.out.println("Persona n° "+(i+1));
+                        System.out.println("Persona n°"+(i+1));
                         System.out.println("Effettuare la prenotazione di:");
                         Persona persona = createPersona(true);
                         pagamento(persona.age);
