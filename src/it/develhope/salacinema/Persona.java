@@ -5,8 +5,10 @@ public class Persona {
     public String surname;
     public int age;
 
-    @Override
+    public Persona() {
+    }
+
     public String toString() {
-        return name + ' ' + surname + " " + age;
+        return this.name + " " + this.surname + " " + this.age;
     }
 }
