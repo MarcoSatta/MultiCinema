@@ -87,10 +87,12 @@ public class Menu {
                         }catch (InputMismatchException e){
                             System.out.println("Comando non idoneo!");
                             scanner.nextLine();
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
                     }
                     System.out.println("Persone prenotate nel cinema " + MultiCinema.cinemas.get(i).nameCinema + " : " +  MultiCinema.cinemas.get(i).stampaArray(MultiCinema.cinemas.get(i).sala));
-                }else {
+                }else if(i ==5 ){
                     /**Else if errore nome del Cinema selezionato*/
                     System.out.println("Non ho trovato nessun cinema con questo nome, reinserire nome cinema valido :");
                     cinemaSelezionato = scanner.next();

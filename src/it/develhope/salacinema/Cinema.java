@@ -1,4 +1,9 @@
 package it.develhope.salacinema;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Cinema {
@@ -7,8 +12,10 @@ public class Cinema {
     public String nameCinema;
     public Persona[] sala;
     public Scanner scanner;
+    public double pagamentoSingolo;
     public int postiLiberiStatic;
     public int numeroPostiLiberi;
+    public MySQLAccess mySQLAccess = new MySQLAccess();
 
     public Cinema(String nameCinema) {
         this.nameCinema = nameCinema;
@@ -35,6 +42,7 @@ public class Cinema {
         int age;
         System.out.println("Inserisci il nome della persona:");
         nome = scanner.next();
+
         System.out.println("Inserisci il cognome della persona:");
         cognome = scanner.next();
         if(prenota){
@@ -49,9 +57,11 @@ public class Cinema {
         if (par < 14){
             System.out.println("Paga il prezzo ridotto di 7 euro al manager " + manager.name);
             manager.quotaRiscossa += 7;
+            pagamentoSingolo = 7;
         }else {
             System.out.println("Paga il prezzo pieno di 10 euro al manager " + manager.name);
             manager.quotaRiscossa += 10;
+            pagamentoSingolo = 10;
         }
     }
 
@@ -70,18 +80,24 @@ public class Cinema {
                         pagamento(persona.age);
                         sala[i] = persona;
                         System.out.println("Hai correttamente prenotato per il cinema "+nameCinema+" un posto per " + persona.name + " " + persona.surname);
+                        mySQLAccess.connessioneAlDB();
+                        mySQLAccess.inserisciDatiUtenteDB(nameCinema, persona, pagamentoSingolo);
                     }
                 }
             } else {
                 System.out.println("devi inserire un numero compreso tra 1 e " + postiLiberiStatic);
             }
-        }catch (Exception e){
+        }catch (InputMismatchException e){
             System.out.println("DEVI INSERIRE UN NUMERO!!");
             scanner.nextLine();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
-    public void cancellaPrenotazione(Persona[] sala){
+    public void cancellaPrenotazione(Persona[] sala) throws Exception {
         this.sala = sala;
         System.out.println("Cancellare la prenotazione di:");
         Persona check = createPersona(false);
@@ -91,10 +107,14 @@ public class Cinema {
                 sala[i] = null;
                 System.out.println("hai correttamente cancellato la prenotazione di: " + check.name + " "+ check.surname+" al cinema  "+ nameCinema);
                 found=true;
+                mySQLAccess.connessioneAlDB();
+                mySQLAccess.eliminaDatiUtenteDB(nameCinema, check.surname);
             }
         }
         if(!found){
             System.out.println("Non ho trovato nessuna persona con questo nome");
+            mySQLAccess.connessioneAlDB();
+            mySQLAccess.eliminaDatiUtenteDB(nameCinema, check.surname);
         }
     }
 

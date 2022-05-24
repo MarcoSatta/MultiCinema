@@ -2,23 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dd0d431-e540-4b80-a34f-c6cdb0bf72c8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_09_05_2022_13_42_[Changes]/Cinema.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_09_05_2022_13_42_[Changes]/Manager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_09_05_2022_13_42_[Changes]/Menu.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_09_05_2022_13_42_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_09_05_2022_13_42_[Changes]1/Cinema.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_09_05_2022_13_42_[Changes]1/Manager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_09_05_2022_13_42_[Changes]1/Menu.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_09_05_2022_13_42_[Changes]1/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_09_05_2022_13_42__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_09_05_2022_13_42__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_09_05_2022_13_42_[Changes]1/Cinema.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_09_05_2022_13_42_[Changes]1/Manager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_09_05_2022_13_42_[Changes]1/Menu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_09_05_2022_13_42_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_09_05_2022_13_42__Changes_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MultiCinema.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MultiCinema.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MultiCinema/it/develhope/salacinema/Cinema.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MultiCinema/it/develhope/salacinema/Cinema.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MultiCinema/it/develhope/salacinema/Manager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MultiCinema/it/develhope/salacinema/Manager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MultiCinema/it/develhope/salacinema/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MultiCinema/it/develhope/salacinema/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MultiCinema/it/develhope/salacinema/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MultiCinema/it/develhope/salacinema/Menu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it/develhope/salacinema/Cinema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/develhope/salacinema/Cinema.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it/develhope/salacinema/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/develhope/salacinema/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/it/develhope/salacinema/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/develhope/salacinema/Manager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/it/develhope/salacinema/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/it/develhope/salacinema/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,8 +34,11 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/out/production/Es.2 Cinema/it/develhope/salacinema/Cinema.class" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/it/develhope/salacinema/MultiCinema.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/it/develhope/salacinema/Manager.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/it/develhope/salacinema/Main.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/it/develhope/salacinema/Menu.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/it/develhope/salacinema/Cinema.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/it/develhope/salacinema/Persona.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -54,6 +52,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
